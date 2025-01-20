@@ -31,11 +31,6 @@ import java.util.HashMap;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/**
- * Test class for {@link PetValidator}
- *
- * @author Wick Dynex
- */
 @ExtendWith(MockitoExtension.class)
 @DisabledInNativeImage
 public class PetValidatorTests {
@@ -60,6 +55,12 @@ public class PetValidatorTests {
 		pet = new Pet();
 		petType = new PetType();
 		errors = new MapBindingResult(new HashMap<>(), "pet");
+	}
+
+	@Test
+	void testSupports() {
+		assertTrue(petValidator.supports(Pet.class));
+		assertFalse(petValidator.supports(Object.class));
 	}
 
 	@Test
